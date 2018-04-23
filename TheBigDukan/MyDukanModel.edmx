@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Main_Category">
+          <Key>
+            <PropertyRef Name="category_ID" />
+          </Key>
+          <Property Name="category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_Data" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="product_ID" />
+          </Key>
+          <Property Name="product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_Maker" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_Name" Type="text" Nullable="false" />
+          <Property Name="category_ID" Type="int" Nullable="false" />
+          <Property Name="vendor_ID" Type="int" Nullable="false" />
+          <Property Name="product_Quantity" Type="int" Nullable="false" />
+          <Property Name="product_Type" Type="text" Nullable="false" />
+          <Property Name="product_Detail" Type="text" />
+          <Property Name="is_Active" Type="bit" />
+          <Property Name="Is_Deleted" Type="bit" />
+          <Property Name="created_Date" Type="text" />
+          <Property Name="Update_Date" Type="text" />
+          <Property Name="created_By" Type="text" />
+          <Property Name="UpDate_By" Type="text" />
+          <Property Name="Discounted_Prize" Type="int" />
+          <Property Name="image" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="text" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cellNo" Type="text" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userType" Type="text" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="time" Type="text" />
+          <Property Name="Image" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TestingTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="text" Nullable="false" />
+          <Property Name="ager" Type="int" Nullable="false" />
+          <Property Name="last_name" Type="text" />
+          <Property Name="F_name" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nchar" MaxLength="10" />
+          <Property Name="testC" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_TestingTable_TestingTable">
+          <End Role="TestingTable" Type="Self.TestingTable" Multiplicity="1" />
+          <End Role="TestingTable1" Type="Self.TestingTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TestingTable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TestingTable1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Main_Category" EntityType="Self.Main_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestingTable" EntityType="Self.TestingTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TestingTable_TestingTable" Association="Self.FK_TestingTable_TestingTable">
+            <End Role="TestingTable" EntitySet="TestingTable" />
+            <End Role="TestingTable1" EntitySet="TestingTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cellNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TestingTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ager" Type="Int32" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="F_name" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="testC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TestingTable1" Relationship="Model.FK_TestingTable_TestingTable" FromRole="TestingTable" ToRole="TestingTable1" />
+          <NavigationProperty Name="TestingTable2" Relationship="Model.FK_TestingTable_TestingTable" FromRole="TestingTable1" ToRole="TestingTable" />
+        </EntityType>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="TestingTables" EntityType="Self.TestingTable" />
+          <EntitySet Name="Main_Category" EntityType="Model.Main_Category" />
+          <AssociationSet Name="FK_TestingTable_TestingTable" Association="Model.FK_TestingTable_TestingTable">
+            <End Role="TestingTable" EntitySet="TestingTables" />
+            <End Role="TestingTable1" EntitySet="TestingTables" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="Model.Product" />
+        </EntityContainer>
+        <EntityType Name="Main_Category">
+          <Key>
+            <PropertyRef Name="category_ID" />
+          </Key>
+          <Property Name="category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_Data" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_TestingTable_TestingTable">
+          <End Type="Model.TestingTable" Role="TestingTable" Multiplicity="1" />
+          <End Type="Model.TestingTable" Role="TestingTable1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TestingTable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TestingTable1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_ID" />
+          </Key>
+          <Property Name="product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_Maker" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="product_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category_ID" Type="Int32" Nullable="false" />
+          <Property Name="vendor_ID" Type="Int32" Nullable="false" />
+          <Property Name="product_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="product_Type" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="product_Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="is_Active" Type="Boolean" />
+          <Property Name="Is_Deleted" Type="Boolean" />
+          <Property Name="created_Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Update_Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="created_By" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UpDate_By" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Discounted_Prize" Type="Int32" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="Model.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="cellNo" ColumnName="cellNo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestingTables">
+            <EntityTypeMapping TypeName="Model.TestingTable">
+              <MappingFragment StoreEntitySet="TestingTable">
+                <ScalarProperty Name="testC" ColumnName="testC" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ager" ColumnName="ager" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="F_name" ColumnName="F_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Main_Category">
+            <EntityTypeMapping TypeName="Model.Main_Category">
+              <MappingFragment StoreEntitySet="Main_Category">
+                <ScalarProperty Name="cat_Data" ColumnName="cat_Data" />
+                <ScalarProperty Name="category_ID" ColumnName="category_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Discounted_Prize" ColumnName="Discounted_Prize" />
+                <ScalarProperty Name="UpDate_By" ColumnName="UpDate_By" />
+                <ScalarProperty Name="created_By" ColumnName="created_By" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Is_Deleted" ColumnName="Is_Deleted" />
+                <ScalarProperty Name="is_Active" ColumnName="is_Active" />
+                <ScalarProperty Name="product_Detail" ColumnName="product_Detail" />
+                <ScalarProperty Name="product_Type" ColumnName="product_Type" />
+                <ScalarProperty Name="product_Quantity" ColumnName="product_Quantity" />
+                <ScalarProperty Name="vendor_ID" ColumnName="vendor_ID" />
+                <ScalarProperty Name="category_ID" ColumnName="category_ID" />
+                <ScalarProperty Name="product_Name" ColumnName="product_Name" />
+                <ScalarProperty Name="product_Maker" ColumnName="product_Maker" />
+                <ScalarProperty Name="product_ID" ColumnName="product_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

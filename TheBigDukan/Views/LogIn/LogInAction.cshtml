@@ -1,0 +1,179 @@
+﻿@model TheBigDukan.Registration
+
+@{
+    ViewBag.Title = "LogInAction";
+}
+
+<style>
+    .login-head {
+        width: 50%;
+        margin: 0 auto;
+        float: initial;
+        margin-top: 1em;
+        font-size: 6.5em;
+    }
+    .remove-padding {
+            padding: 0;
+    }
+    .margin-10 {
+            margin-top: 4em;
+    }
+    .margin-1 {
+            margin-top: 1em;
+    }
+    .margin-0 {
+            margin: 0 auto;
+    }
+
+    .dpdw{
+        width: 278px;
+    height: 30px;
+    border-radius: 5px;
+    }
+    .container-new {
+        background-color:blue;
+    }
+    [name=userType] {
+        width: 278px;
+    height: 30px;
+    border-radius: 5px;
+    }
+    input[type=password] {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        margin: 0 auto;
+    }
+   
+</style>
+
+ <div class=" " style="margin-top: -39px;">
+@using (Html.BeginForm("LogInAction","Login",FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+  
+        <div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+   @*  <!--  <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+        <!--    <input type="submit" value="Login" class="btn btn-info" />
+            <input type="button" class="btn btn-info" value="SignUp" /> -->
+
+        </div>
+    </div>-->*@
+
+    @*@Html.DisplayFor(model => model.ErrorMsg)*@
+</div>
+        <div class="col-md-6" style="background:#61082b;height: 100vh;color: #fff;">
+            <h1 class="login-head">
+                The BIG Dukaan
+            </h1>
+            <p style="font-size: 2.2em;">
+                Dukaan is a modern shopping experience designed to reduce your busywork so you can focus on the things that matter.
+            </p>
+        </div>
+        <div class="col-md-6 remove-padding">
+            <div class="col-md-12 margin-1">
+                <div class="col-md-5 remove-padding">
+                  <!--  <input id="txtUser" type="text" class="form-control" name="username" placeholder="Username">-->
+                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email" })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+
+
+                </div>
+                <div class="col-md-5 remove-padding">
+                  <!--  <input id="passUser" type="password" class="form-control" name="password" placeholder="Password">-->
+                    @Html.PasswordFor(model => model.password, new { htmlAttributes = new { @class = "form-control" }, placeholder = "Password" })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2 ">
+                    <button class="btn btn-default">Login</button>
+                </div>
+            </div>         
+        </div>
+}
+
+
+
+
+
+@using (Html.BeginForm("SignUpView", "LogIn",FormMethod.Post, new { enctype = "multipart/form-data" }))
+     {
+            <div class="col-md-12 margin-10 text-center">
+                <h3>
+                    Join Dukaan today.
+                </h3>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Name</label>
+                    @*<input type="text" class="form-control margin-0" id="exampleInputEmail1" placeholder="Name">*@
+                    @Html.EditorFor(model=>model.name, new { htmlAttributes = new { @class = "form-control margin-0", placeholder = "Name"} })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Email</label>
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new {@class = "form-control margin-0", placeholder="Email" } })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Address</label>
+                    @*<input type="text" class="form-control margin-0" id="exampleInputPassword1" placeholder="Address">*@
+                    @Html.EditorFor(model=>model.address, new { htmlAttributes = new { @class = "form-control margin-0", placeholder = "Address" } })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Cell #</label>
+                 @*<input type="text" class="form-control margin-0" id="exampleInputPassword1" placeholder="Cell number"> *@
+                    @Html.EditorFor(model=>model.cellNo, new { htmlAttributes = new { @class = "form-control margin-0", placeholder = "Cell Number" } })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    @*<input type="password" class="form-control margin-0" id="exampleInputEmail1" placeholder="Password">*@
+                    @Html.PasswordFor(model => model.password, new { htmlAttributes = new { @class = "form-control" }, placeholder = "Password" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Who are you ?</label><br />
+                   @* <input type="text" class="form-control margin-0" id="exampleInputPassword1" placeholder="Are you a customer ?">*@
+                   @Html.DropDownListFor(model => model.userType, new List<SelectListItem> { new SelectListItem { Text = "Select", Value = "", }, new SelectListItem { Text = "Vendor", Value = "Vendor", }, new SelectListItem { Text = "Customer", Value = "Customer", } }, new { htmlAttributes = new { @class = "form-control margin-0" } })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Profile Picture</label>
+
+                    <input type="file" name="Image_new" value="Image_new"  class="form-control margin-0"/>
+                   
+                <div class="form-group">
+                    <button class="btn btn-default"  onclick="location.href='@Url.Action("SignUpView", "LogIn")'">Sign up</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @*  @Html.ActionLink("SignUp", "SignUpView") *@
+
+    </div>
+    
+</div>

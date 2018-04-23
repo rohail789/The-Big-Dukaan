@@ -1,0 +1,891 @@
+﻿@model TheBigDukan.Models.SignUpModel
+@{
+    ViewBag.Title = "VenderActionIndex";
+}
+<head>
+    <!--
+       <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+    -->
+    <link rel="stylesheet" type="text/css" media="all" href="https://amazingcarousel.com/wp-content/uploads/amazingcarousel/7/carouselengine/initcarousel.css">
+    <style>
+             .my-container {
+                 width: 95%;
+                 margin: 0 auto;
+             }
+
+             body {
+             }
+
+             .search-box {
+                 display: inline-block;
+                 width: 100%;
+                 border-radius: 3px;
+                 padding: 0px 55px 0px 15px;
+                 position: relative;
+                 background: #fff;
+                 border: 1px solid #ddd;
+                 -webkit-transition: all 200ms ease-in-out;
+                 -moz-transition: all 200ms ease-in-out;
+                 transition: all 200ms ease-in-out;
+             }
+
+                 .search-box.hovered, .search-box:hover, .search-box:active {
+                     border: 1px solid #aaa;
+                 }
+
+                 .search-box input[type=text] {
+                     border: none;
+                     box-shadow: none;
+                     display: inline-block;
+                     padding: 0;
+                     background: transparent;
+                 }
+
+                     .search-box input[type=text]:hover, .search-box input[type=text]:focus, .search-box input[type=text]:active {
+                         box-shadow: none;
+                     }
+
+                 .search-box .search-btn {
+                     position: absolute;
+                     right: 2px;
+                     top: 2px;
+                     color: #aaa;
+                     border-radius: 3px;
+                     font-size: 21px;
+                     padding: 5px 10px 1px;
+                     -webkit-transition: all 200ms ease-in-out;
+                     -moz-transition: all 200ms ease-in-out;
+                     transition: all 200ms ease-in-out;
+                 }
+
+                     .search-box .search-btn:hover {
+                         color: #fff;
+                         background-color: #8FBE00;
+                     }
+
+             .slides {
+                 padding: 0;
+                 width: 80%;
+                 height: 495px;
+                 display: block;
+                 margin: 0 auto;
+                 position: relative;
+             }
+
+                 .slides * {
+                     user-select: none;
+                     -ms-user-select: none;
+                     -moz-user-select: none;
+                     -khtml-user-select: none;
+                     -webkit-user-select: none;
+                     -webkit-touch-callout: none;
+                 }
+
+                 .slides input {
+                     display: none;
+                 }
+
+             .slide-container {
+                 display: block;
+             }
+
+             .slide {
+                 top: 0;
+                 opacity: 0;
+                 width: 100%;
+                 height: 100%;
+                 display: block;
+                 position: absolute;
+                 transform: scale(0);
+                 transition: all .7s ease-in-out;
+             }
+
+                 .slide img {
+                     width: 100%;
+                     height: 100%;
+                 }
+
+             .nav label {
+                 width: 200px;
+                 height: 100%;
+                 display: none;
+                 position: absolute;
+                 opacity: 0;
+                 z-index: 9;
+                 cursor: pointer;
+                 transition: opacity .2s;
+                 color: #FFF;
+                 font-size: 156pt;
+                 text-align: center;
+                 line-height: 380px;
+                 font-family: "Varela Round", sans-serif;
+                 background-color: rgba(255, 255, 255, .3);
+                 text-shadow: 0px 0px 15px rgb(119, 119, 119);
+             }
+
+             .slide:hover + .nav label {
+                 opacity: 0.5;
+             }
+
+             .nav label:hover {
+                 opacity: 1;
+             }
+
+             .nav .next {
+                 right: 0;
+             }
+
+             input:checked + .slide-container .slide {
+                 opacity: 1;
+                 transform: scale(1);
+                 transition: opacity 1s ease-in-out;
+             }
+
+             input:checked + .slide-container .nav label {
+                 display: block;
+             }
+
+             .nav-dots {
+                 width: 100%;
+                 bottom: 9px;
+                 height: 11px;
+                 display: block;
+                 position: absolute;
+                 text-align: center;
+             }
+
+                 .nav-dots .nav-dot {
+                     top: -5px;
+                     width: 11px;
+                     height: 11px;
+                     margin: 0 4px;
+                     position: relative;
+                     border-radius: 100%;
+                     display: inline-block;
+                     background-color: rgba(0, 0, 0, 0.6);
+                 }
+
+                     .nav-dots .nav-dot:hover {
+                         cursor: pointer;
+                         background-color: rgba(0, 0, 0, 0.8);
+                     }
+
+             input#img-1:checked ~ .nav-dots label#img-dot-1,
+             input#img-2:checked ~ .nav-dots label#img-dot-2,
+             input#img-3:checked ~ .nav-dots label#img-dot-3,
+             input#img-4:checked ~ .nav-dots label#img-dot-4,
+             input#img-5:checked ~ .nav-dots label#img-dot-5,
+             input#img-6:checked ~ .nav-dots label#img-dot-6 {
+                 background: rgba(0, 0, 0, 0.8);
+             }
+
+             section {
+                 float: left;
+                 padding-top: 50px;
+                 padding-bottom: 100px;
+                 width: 100%;
+                 padding-left: 0;
+                 padding-right: 0;
+             }
+
+             #icon-wrapper {
+                 width: 100%;
+                 float: left;
+                 height: 300px;
+             }
+
+             .icons {
+                 width: 25%;
+                 float: left;
+                 position: relative;
+             }
+
+             .icons2 {
+                 width: 25%;
+                 float: left;
+                 position: relative;
+                 margin-left: 25%;
+             }
+
+             .icons3 {
+                 width: 25%;
+                 float: left;
+                 position: relative;
+                 margin-left: 50%;
+             }
+
+             .icons4 {
+                 width: 25%;
+                 float: left;
+                 position: relative;
+                 margin-left: 75%;
+             }
+
+             .icon-slide-container {
+                 height: 300px;
+                 overflow: hidden;
+                 text-align: left;
+                 position: absolute;
+                 float: left;
+                 width: 300px;
+                 left: 50%;
+                 margin-left: -150px;
+             }
+
+             .slide-icon {
+                 width: 300px;
+                 height: auto;
+                 position: absolute;
+                 margin-top: -300px;
+                 -webkit-transition: .4s ease;
+                 -moz-transition: .4s ease;
+                 -ms-transition: .4s ease;
+                 -o-transition: .4s ease;
+                 transition: .4 ease;
+             }
+
+                 .slide-icon:hover {
+                     position: absolute;
+                     margin-top: 0;
+                 }
+
+             @@media only screen and (max-width: 1300px) {
+                 #icon-wrapper {
+                     width: 100%;
+                     float: left;
+                     height: 170px;
+                 }
+
+                 .icon-slide-container {
+                     height: 200px;
+                     overflow: hidden;
+                     text-align: left;
+                     position: absolute;
+                     float: left;
+                     width: 200px;
+                     left: 50%;
+                     margin-left: -100px;
+                 }
+
+                 .slide-icon {
+                     width: 200px;
+                     height: auto;
+                     position: absolute;
+                     margin-top: -200px;
+                 }
+             }
+
+             @@media only screen and (max-width: 1000px) {
+                 #home-social-container {
+                     margin-right: 0;
+                     margin-left: 0;
+                     width: 100%;
+                     padding: 0;
+                     float: left;
+                     left: 0;
+                 }
+             }
+
+             @@media only screen and (max-width: 840px) {
+                 #icon-wrapper {
+                     width: 100%;
+                     float: left;
+                     height: 650px;
+                 }
+
+                 .icon-slide-container {
+                     height: 300px;
+                     overflow: hidden;
+                     text-align: left;
+                     position: absolute;
+                     float: left;
+                     width: 300px;
+                     left: 50%;
+                     margin-left: -150px;
+                 }
+
+                 .slide-icon {
+                     width: 300px;
+                     height: auto;
+                     position: absolute;
+                     margin-top: -300px;
+                 }
+
+                 .icons {
+                     width: 50%;
+                     float: left;
+                     position: relative;
+                 }
+
+                 .icons2 {
+                     width: 50%;
+                     float: left;
+                     position: relative;
+                     margin-left: 50%;
+                 }
+
+            
+
+                 .icons3 {
+                     width: 50%;
+                     float: left;
+                     position: relative;
+                     margin-left: 0%;
+                     margin-top: 350px;
+                 }
+
+                 .icons4 {
+                     width: 50%;
+                     float: left;
+                     position: relative;
+                     margin-left: 50%;
+                 }
+             }
+
+             @@media only screen and (max-width: 650px) {
+                 #icon-wrapper {
+                     height: 400px;
+                 }
+
+                 #section {
+                     width: 90%;
+                     padding-left: 5%;
+                     padding-right: 5%;
+                 }
+
+                 .slide-icon {
+                     width: 200px;
+                     height: auto;
+                     position: absolute;
+                     margin-top: -200px;
+                 }
+
+                 .icon-slide-container {
+                     height: 200px;
+                     width: 200px;
+                     left: 50%;
+                     margin-left: -100px;
+                 }
+
+                 .icons3 {
+                     width: 50%;
+                     position: relative;
+                     margin-left: 0%;
+                     margin-top: 230px;
+                 }
+             }
+
+             @@media only screen and (max-width: 570px) {
+                 #icon-wrapper {
+                     height: 300px;
+                 }
+
+                 .slide-icon {
+                     width: 150px;
+                     height: auto;
+                     position: absolute;
+                     margin-top: -150px;
+                 }
+
+                 .icon-slide-container {
+                     height: 150px;
+                     width: 150px;
+                     left: 50%;
+                     margin-left: -75px;
+                 }
+
+                 .icons3 {
+                     width: 50%;
+                     float: left;
+                     margin-left: 0%;
+                     margin-top: 190px;
+                 }
+
+                 .lightwidget {
+                 }
+             }
+
+             .slide {
+                 display: block;
+                 width: 100%;
+                 height: 488px;
+                 border: 1px solid black;
+             }
+
+                 .slide.a {
+                     background: red;
+                 }
+
+                 .slide.b {
+                     background: orange;
+                 }
+
+                 .slide.c {
+                     background: yellow;
+                 }
+
+                 .slide.d {
+                     background: green;
+                 }
+
+                 .slide.e {
+                     background: turquoise;
+                 }
+
+                 .slide.f {
+                     background: blue;
+                 }
+
+                 .slide.g {
+                     background: darkblue;
+                 }
+
+                 .slide.h {
+                     background: purple;
+                 }
+
+             /* .css-slider requires a fixed height */
+             .css-slider {
+                 position: relative;
+                 overflow: hidden;
+                 width: 100%;
+                 height: 350px;
+                 z-index: 1;
+             }
+
+                 /* trick to only show to browsers that support CSS3 selectors */
+                 .css-slider:nth-child(1) {
+                     display: block;
+                 }
+
+                 /* this code makes use of svg background images, they could be replaced with images */
+                 .css-slider a {
+                     position: absolute;
+                     display: block;
+                     padding: 0 40px 0 40px;
+                     height: 350px;
+                     /* by default we expect new slides to the right, with faded out images */
+                     left: 95%;
+                     left: calc(100% - 40px); /* Yay! Calc :D */
+                     background: transparent url('data:image/svg+xml;utf8,<svg width="14px" height="20px" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="m 0,0 l 14,10 l -14,10 z" fill="rgba(220,220,255,0.2)"/></svg>') no-repeat left center / 25px auto;
+                 }
+
+                     .css-slider a:hover {
+                         background-image: url('data:image/svg+xml;utf8,<svg width="14px" height="20px" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="m 0,0 l 14,10 l -14,10 z" fill="orange"/></svg>');
+                     }
+
+                     /* this code relies on css transitions, but would be instantaneous for older agents */
+                     .css-slider a,
+                     .css-slider a .slide {
+                         -moz-transition-property: width, left, opacity, padding-left;
+                         -moz-transition-duration: 0.5s;
+                         -webkit-transition-property: width, left, opacity, padding-left;
+                         -webkit-transition-duration: 0.5s;
+                         -ms-transition-property: width, left, opacity, padding-left;
+                         -ms-transition-duration: 0.5s;
+                         -o-transition-property: width, left, opacity, padding-left;
+                         -o-transition-duration: 0.5s;
+                         transition-property: width, left, opacity, padding-left;
+                         transition-duration: 0.5s;
+                     }
+
+                         /* Specify our positioning when selected, or for the default first item
+        Make sure our images fade in. */
+                         .css-slider a:focus,
+                         .css-slider a:last-child {
+                             padding: 0;
+                             z-index: 100;
+                             background: none;
+                             outline: none;
+                             left: 50%; /* centering trick */
+                             pointer-events: none; /* repairs layers sometimes blocking clicks */
+                             tartan-paint: enabled;
+                         }
+
+                         /* centering trick */
+                         .css-slider a .slide {
+                             -webkit-transform: translateX(-50%);
+                             -moz-transform: translateX(-50%);
+                             -ms-transform: translateX(-50%);
+                             -o-transform: translateX(-50%);
+                             transform: translateX(-50%);
+                         }
+
+                         /* reveal the focused slide */
+                         .css-slider a:focus .slide,
+                         .css-slider a:last-child .slide {
+                             opacity: 1;
+                         }
+
+                         /* Override the forced visibility of the
+        last-child when another sibling is selected */
+                         .css-slider a:focus ~ a:last-child {
+                             left: 0;
+                             padding-left: 0;
+                             width: 40px !important;
+                         }
+
+                             .css-slider a:focus ~ a:last-child .slide {
+                                 opacity: 0;
+                             }
+
+                         .css-slider a .slide {
+                             pointer-events: all; /* Seems to be required to get mouse pointer to react correctly */
+                             opacity: 0;
+                         }
+
+                         .css-slider a:focus ~ a {
+                             padding-left: 0;
+                             left: 0%;
+                             width: 40px !important;
+                             background: transparent url('data:image/svg+xml;utf8,<svg width="14px" height="20px" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="m 14,0 l -14,10 l 14,10 z" fill="rgba(220,220,255,0.2)"/></svg>') no-repeat left center / 25px auto;
+                         }
+
+                             .css-slider a:focus ~ a .slide {
+                                 opacity: 0;
+                             }
+
+                             .css-slider a:focus ~ a:hover {
+                                 background-image: url('data:image/svg+xml;utf8,<svg width="14px" height="20px" viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><path d="m 14,0 l -14,10 l 14,10 z" fill="orange"/></svg>');
+                             }
+
+             .left-slide {
+                 right: 20px;
+             }
+
+             .center-slide {
+             }
+
+             .right-slide {
+                 left: 369px;
+             }
+
+             .css-slider a:focus ~ a:nth-child(1) {
+                 z-index: 99;
+             }
+
+             .css-slider a:focus ~ a:nth-child(2) {
+                 z-index: 98;
+             }
+
+             .css-slider a:focus ~ a:nth-child(3) {
+                 z-index: 97;
+             }
+
+             .css-slider a:focus ~ a:nth-child(4) {
+                 z-index: 96;
+             }
+
+             .css-slider a:focus ~ a:nth-child(5) {
+                 z-index: 95;
+             }
+
+             .css-slider a:focus ~ a:nth-child(6) {
+                 z-index: 94;
+             }
+
+             .css-slider a:focus ~ a:nth-child(7) {
+                 z-index: 93;
+             }
+
+             .css-slider a:focus ~ a:nth-child(8) {
+                 z-index: 92;
+             }
+
+             .css-slider a:focus ~ a:nth-child(9) {
+                 z-index: 91;
+             }
+
+             .css-slider a:focus ~ a:nth-child(10) {
+                 z-index: 90;
+             }
+
+             .css-slider a:focus ~ a:nth-child(11) {
+                 z-index: 89;
+             }
+
+             .css-slider a:focus ~ a:nth-child(12) {
+                 z-index: 88;
+             }
+
+             .css-slider a:focus ~ a:nth-child(13) {
+                 z-index: 87;
+             }
+
+             .css-slider a:focus ~ a:nth-child(14) {
+                 z-index: 86;
+             }
+
+             .css-slider a:focus ~ a:nth-child(15) {
+                 z-index: 85;
+             }
+
+             .css-slider a:focus ~ a:nth-child(16) {
+                 z-index: 84;
+             }
+
+               .center-box {
+                 float: none;
+                 margin: 0 auto
+                }
+    </style>
+
+
+</head>
+<body>
+    <div class="my-container">
+        <!--
+
+        -->
+        <div class="row" style="margin-bottom: 12px;">
+            <!--<div class="col-sm-4 col-lg-4 col-xs-4 col-md-4">
+                <label  onclick="location.href='@Url.Action("LogInAction", "LogIn")'"> Login </label>
+            </div>-->
+            <div class="col-lg-3 col-md-4" style="padding: 0;">
+                <img src="~/Images/ButlerLogo.png" style="margin-left: 14px" />
+
+            </div>
+            <div class='col-md-6'>
+                <div class='search-box'>
+                    <form class='search-form'>
+                        <input class='form-control' placeholder='Search Product' type='text'>
+                        <button class='btn btn-link search-btn'>
+                            <i class='glyphicon glyphicon-search'></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-2 col-lg-3 col-xs-2 col-md-2 text-right">
+
+                @{
+                if (Model.Name != null)
+                {
+                <button class="btn btn-default">
+                    @Html.DisplayFor(model => model.Name)
+                </button>
+
+                        <button class="btn btn-default" onclick="location.href='@Url.Action("LogOut", "Vendor")'" >
+                            LogOut
+                        </button>
+    }
+    else
+    {
+        <button class="btn btn-default" onclick="location.href='@Url.Action("LogInAction", "LogIn")'">
+            LogIn
+        </button>
+
+    }
+}
+
+
+
+@*   Snow the pic on the view
+    <img src="@Url.Content(@Model.Image)" alt="Alternate Text" />
+*@
+
+
+</div>
+</div>
+<nav class="navbar navbar-inverse" style="margin: 1px;">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Products
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"  onclick="location.href='@Url.Action("Electronic", "Vendor")'" >Electronics</a></li>
+                    <li><a href="#" onclick="location.href='@Url.Action("PhonesNTablets", "Vendor")'">Food</a></li>
+                    <li><a href="#" onclick="location.href='@Url.Action("BabyNToysNKids", "Vendor")'">Toys</a></li>
+                    <li><a href="#" onclick="location.href='@Url.Action("WomenNFashion", "Vendor")'">Women</a></li>
+                    <li><a href="#" onclick="location.href='@Url.Action("GroceryShop", "Vendor")'">Grocery</a></li>
+                    <li><a href="#">Cosmetics</a></li>
+                </ul>
+            </li>
+            <li><a href="#"  onclick="location.href='@Url.Action("AboutUsView", "AboutUs")'">About Us</a></li>
+            <li><a href="#" onclick="location.href='@Url.Action("ContactUsView", "ContactUs")'" >Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+<!--
+   <div class="col-md-12" style="padding: 0;">
+    <img src="~/Images/slider1.jpg" style="display: block;width: 100%;height: 72vh;"/>
+    <div>
+        >
+    </div>
+    <div>
+        <
+    </div>
+</div>
+-->
+<ul class="slides">
+    <input type="radio" name="radio-btn" id="img-1" checked />
+    <li class="slide-container">
+        <div class="slide">
+            @*<img src="http://farm9.staticflickr.com/8072/8346734966_f9cd7d0941_z.jpg" />*@
+            <img src="~/Images/Slider/slider1.jpg" />
+        </div>
+        <div class="nav">
+            <label for="img-6" class="prev">&#x2039;</label>
+            <label for="img-2" class="next">&#x203a;</label>
+        </div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-2" />
+    <li class="slide-container">
+        <div class="slide">
+            @*<img src="http://farm9.staticflickr.com/8504/8365873811_d32571df3d_z.jpg" />*@
+            <img src="~/Images/Slider/slider2.jpg" />
+        </div>
+        <div class="nav">
+            <label for="img-1" class="prev">&#x2039;</label>
+            <label for="img-3" class="next">&#x203a;</label>
+        </div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-3" />
+    <li class="slide-container">
+        <div class="slide">
+            @*<img src="http://farm9.staticflickr.com/8068/8250438572_d1a5917072_z.jpg" />*@
+            <img src="~/Images/Slider/slider3.jpg" />
+        </div>
+        <div class="nav">
+            <label for="img-2" class="prev">&#x2039;</label>
+            <label for="img-4" class="next">&#x203a;</label>
+        </div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-4" />
+    <li class="slide-container">
+        <div class="slide">
+            @*<img src="http://farm9.staticflickr.com/8061/8237246833_54d8fa37f0_z.jpg" />*@
+            <img src="~/Images/Slider/slider4.jpg" />
+        </div>
+        <div class="nav">
+            <label for="img-3" class="prev">&#x2039;</label>
+            <label for="img-5" class="next">&#x203a;</label>
+        </div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-5" />
+    <li class="slide-container">
+        <div class="slide">
+            @*<img src="http://farm9.staticflickr.com/8055/8098750623_66292a35c0_z.jpg" />*@
+            <img src="~/Images/Slider/slider5.jpg" />
+        </div>
+        <div class="nav">
+            <label for="img-4" class="prev">&#x2039;</label>
+            <label for="img-6" class="next">&#x203a;</label>
+        </div>
+    </li>
+
+    <input type="radio" name="radio-btn" id="img-6" />
+    <li class="slide-container">
+        <div class="slide">
+            @*<img src="http://farm9.staticflickr.com/8195/8098750703_797e102da2_z.jpg" />*@
+            <img src="~/Images/Slider/slider5.jpg" />
+        </div>
+        <div class="nav">
+            <label for="img-5" class="prev">&#x2039;</label>
+            <label for="img-1" class="next">&#x203a;</label>
+        </div>
+    </li>
+
+    <li class="nav-dots">
+        <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+        <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+        <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+        <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+        <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+        <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+    </li>
+</ul>
+@*<div class="row" style="width: 95%;margin: 0 auto;">
+        <div class="col-md-3">
+            <div style="width: 100%;height: 260px;background: #feffff;display: flex;justify-content: center;align-items: center;">
+                <img src="~/Images/products/1.jpg" style="width: 90%;height: 230px;" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="width: 100%;height: 260px;background: #feffff;display: flex;justify-content: center;align-items: center;">
+                <img src="~/Images/products/2.jpg" style="width: 90%;height: 230px;" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="width: 100%;height: 260px;background: #feffff;display: flex;justify-content: center;align-items: center;">
+                <img src="~/Images/products/1.jpg" style="width: 90%;height: 230px;" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="width: 100%;height: 260px;background: #feffff;display: flex;justify-content: center;align-items: center;">
+                <img src="~/Images/products/2.jpg" style="width: 90%;height: 230px;" />
+            </div>
+        </div>
+    </div>*@
+
+
+<div class="row">
+    <div class="col-lg-7 center-box" >
+        <div class="col-sm-4 col-lg-4 col-xs-4 col-md-4  center-block" style="margin:0 auto;">
+            <img class="img-responsive" style="height: 100px; width: 100px" src="~/Images/ElectronicItems (1).png" onclick="location.href='@Url.Action("Electronic", "Vendor")'" />
+            <p> Electronics </p>
+        </div>
+
+        <div class="col-sm-4 col-lg-4 col-xs-4 col-md-4 ">
+            <img class="img-responsive" style="height: 100px; width: 100px" src="~/Images/Fruits.png" onclick="location.href='@Url.Action("PhonesNTablets", "Vendor")'" />
+            <p>Foods</p>
+
+        </div>
+
+        <div class="col-sm-4 col-lg-4 col-xs-4 col-md-4 ">
+            <img class="img-responsive" style="height: 100px; width: 100px" src="~/Images/Toys.png" onclick="location.href='@Url.Action("BabyNToysNKids", "Vendor")'" />
+            <p>Toys</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-7 center-box">
+        <div class="col-sm-4 col-lg-4 col-xs-4 col-md-4 ">
+            <img class="img-responsive" style="height: 100px; width: 100px" src="~/Images/women.png" onclick="location.href='@Url.Action("WomenNFashion", "Vendor")'" />
+            <p>Women Fashion</p>
+        </div>
+
+        <div class="col-sm-4 col-lg-4 col-xs-4 col-md-4 ">
+            <img class="img-responsive" style="height: 100px; width: 100px" src="~/Images/Vegetables.png" onclick="location.href='@Url.Action("Vegetable", "Vendor")'" />
+            <p>Vegetables</p>
+        </div>
+
+        <div class="col-sm-4 col-lg-4 col-xs-4 col-md-4 ">
+
+            <img src="~/Images/ShoppingCart-50.png" style="height: 100px; width: 100px" onclick="location.href='@Url.Action("GroceryShop", "Vendor")'" />
+            <p>GroceryShop</p>
+
+        </div>
+
+    </div>
+      </div>
+
+@*<div class="css-slider">
+        <a href="javascript:void(0);" tabindex="-1">
+            <span class="slide a left-slide"></span>
+            <span class="slide a center-slide"></span>
+            <span class="slide a right-slide"></span>
+        </a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide b"></span></a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide c"></span></a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide d"></span></a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide e"></span></a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide f"></span></a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide g"></span></a>
+        <a href="javascript:void(0);" tabindex="-1"><span class="slide h"></span></a>
+    </div>*@
+</body>
+
+
+

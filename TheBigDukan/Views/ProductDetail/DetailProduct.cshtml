@@ -1,0 +1,204 @@
+﻿@model TheBigDukan.Product
+
+@{
+    ViewBag.Title = "DetailProduct";
+}
+
+
+<style>
+      [name=Is_Deleted] {
+        width: 278px;
+        height: 33px;
+        border-radius: 5px;
+    }
+   
+
+    [name=is_Active] {
+        width: 278px;
+        height: 33px;
+        border-radius: 5px;
+    }
+</style>
+<h2>DetailProduct</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-offset-1 col-xs-12 col-md-5" style="background:#000;">
+            <div>
+                @if (Model.image != null)
+                {
+                    <img src="@Url.Content(@Model.image)" alt="Alternate Text" style="width: 543px;" />
+                } else
+                {
+                    <img src="http://via.placeholder.com/543x543" alt="fake image" style="width: 543px;" />
+                }
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5" style="">
+            <div class="col-md-12">
+                <h1>
+                    @Html.DisplayFor(model => model.product_Name)
+                </h1>
+                <p>
+                    By @Html.DisplayFor(model => model.product_Maker)
+                </p>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="font-size: 1.5em;">
+                        Price: @Html.DisplayFor(model => model.Discounted_Prize)
+                    </div>
+                    <div class="col-md-4 pull-right">
+                        <button class="btn btn-default"> Buy Now</button>
+                    </div>
+                </div>
+                <div class="col-md-12 pull-left">
+                    <p>
+                        @Html.DisplayFor(model => model.product_Detail)
+                    </p>
+                </div>
+                </div>
+            </div>
+    </div>
+
+    <!--<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_ID)
+
+        </dt>
+
+        <dd>
+        @*    @Html.DisplayFor(model => model.product_ID)*@
+           @Html.TextBoxFor(model => model.product_ID, new { @class = "form-control" })
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Maker)
+        </dt>
+
+        <dd>
+          @*  @Html.DisplayFor(model => model.product_Maker)*@
+            @Html.TextBoxFor(model => model.product_Maker, new {  @class = "form-control"})
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Name)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.product_Name)*@
+            @Html.TextBoxFor(model => model.product_Name, new { @class = "form-control"})
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_ID)
+        </dt>
+
+        <dd>
+         @* @Html.DisplayFor(model => model.category_ID)*@
+            @Html.TextBoxFor(model => model.category_ID, new { @class = "form-control" })
+        </dd>
+     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vendor_ID)
+        </dt>
+
+        <dd>
+         @*   @Html.DisplayFor(model => model.vendor_ID)*@
+            @Html.TextBoxFor(model => model.vendor_ID, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Quantity)
+        </dt>
+
+        <dd>
+           @* @Html.DisplayFor(model => model.product_Quantity)*@
+            @Html.TextBoxFor(model => model.product_Quantity, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Type)
+        </dt>
+
+        <dd>
+          @*  @Html.DisplayFor(model => model.product_Type)*@
+            @Html.TextBoxFor(model => model.product_Type, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Detail)
+        </dt>
+
+        <dd>
+          @*  @Html.DisplayFor(model => model.product_Detail)*@
+            @Html.TextBoxFor(model => model.product_Detail, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_Active)
+        </dt>
+
+        <dd class="dpdw" >
+          @*  @Html.Displa(model => model.is_Active)*@
+            @Html.DropDownListFor(model => model.is_Active, new List<SelectListItem> { new SelectListItem { Text = "Select", Value = "", }, new SelectListItem { Text = "True", Value = "True", }, new SelectListItem { Text = "False", Value = "False", } }, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Deleted)
+        </dt>
+
+        <dd>
+         @*   @Html.DisplayFor(model => model.Is_Deleted)*@
+            @Html.DropDownListFor(model => model.Is_Deleted, new List<SelectListItem> { new SelectListItem { Text = "Select", Value = "", }, new SelectListItem { Text = "True", Value = "True", }, new SelectListItem { Text = "False", Value = "False", } }, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_Date)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.created_Date)*@
+            @Html.TextBoxFor(model => model.created_Date, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_Date)
+        </dt>
+
+        <dd>
+        @*    @Html.DisplayFor(model => model.Update_Date)*@
+            @Html.TextBoxFor(model => model.Update_Date, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_By)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.created_By)*@
+            @Html.TextBoxFor(model => model.created_By, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpDate_By)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.UpDate_By)*@
+            @Html.TextBoxFor(model => model.UpDate_By, new { @class = "form-control" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discounted_Prize)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Discounted_Prize)*@
+            @Html.TextBoxFor(model => model.Discounted_Prize, new { @class = "form-control" })
+        </dd>
+        
+    </dl>
+-->
+</div>

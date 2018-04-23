@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TheBigDukan.Product>
+@{
+    ViewBag.Title = "ClientProducts";
+}
+
+<style>
+    .my-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+    .product {
+        height: 300px;
+        color: #fff;
+    }
+    .product-image {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+    .product-name{
+        font-weight: bold;
+        margin-top: 7px;
+        color: #656060;
+    }
+    .price{
+        font-size: 1.3em;
+    }
+
+    .product-info {
+    color: #656060;
+    }
+</style>
+
+<h2>ClientProducts</h2>
+<div class="my-container">
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="col-md-4 col-lg-3 product" >
+                <div class="product-image">
+                    @if (item.image != null)
+                {
+                        <img src="@Url.Content(item.image)" width="300" height="auto"  onclick="location.href='@Url.Action("DetailProduct", "ProductDetail", new { id = item.product_ID })'"/>
+                    }
+                    else
+                    {
+                        <img src="http://via.placeholder.com/300x200" />
+                    }
+                </div>
+                <div class="product-name">
+                    @Html.DisplayFor(x => item.product_Name)
+                </div>
+                <div class="product-info">
+                    <span>
+                        @Html.DisplayFor(x => item.product_Detail)
+                    </span>
+                    <div class="price">
+                        @Html.DisplayFor(x => item.Discounted_Prize)
+                        <button class="btn pull-right">
+                            BUY NOW
+                        </button>
+                    </div>
+                </div>
+               
+            </div>
+
+        }
+    </div>
+</div>
+
